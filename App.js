@@ -7,7 +7,7 @@
  */
 import 'react-native-gesture-handler';
 
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import {Button, Image, Text, View} from 'react-native';
 import {createAppContainer} from 'react-navigation';
 import {createStackNavigator} from 'react-navigation-stack';
@@ -20,9 +20,19 @@ const Logo = () => (
 /* navigation의 push는 기록에 추가하고 이동시킨다. */
 
 const HomeScreen = props => {
+  const {navigation} = props;
+  const [count, setCount] = useState(0);
+
+  useEffect(() => {
+    navigation.setParams({
+      increaseCount: () => setCount(c => c + 1),
+    });
+  }, []);
+
   return (
     <View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
       <Text>Home Screen</Text>
+      <Text>Count: {count}</Text>
       <Button
         title="Go to Details"
         onPress={() =>
@@ -36,12 +46,21 @@ const HomeScreen = props => {
   );
 };
 
-HomeScreen.navigationOptions = {
-  title: 'Home',
-  headerTitle: () => <Logo />,
-  headerStyle: {
-    backgroundColor: '#ffffff',
-  },
+HomeScreen.navigationOptions = ({navigation}) => {
+  return {
+    title: 'Home',
+    headerTitle: () => <Logo />,
+    headerStyle: {
+      backgroundColor: '#ffffff',
+    },
+    headerRight: () => (
+      <Button
+        onPress={navigation.getParam('increaseCount')}
+        title="+1"
+        color="#000"
+      />
+    ),
+  };
 };
 
 const DetailScreen = props => {
