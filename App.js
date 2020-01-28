@@ -8,9 +8,13 @@
 import 'react-native-gesture-handler';
 
 import React from 'react';
-import {Button, View, Text} from 'react-native';
+import {Button, Image, Text, View} from 'react-native';
 import {createAppContainer} from 'react-navigation';
 import {createStackNavigator} from 'react-navigation-stack';
+
+const Logo = () => (
+  <Image source={require('./spiro.png')} style={{width: 30, height: 30}} />
+);
 
 /* navigation의 navigate는 기록을 초기화 시키고 이동시켜 버린다. */
 /* navigation의 push는 기록에 추가하고 이동시킨다. */
@@ -30,6 +34,14 @@ const HomeScreen = props => {
       />
     </View>
   );
+};
+
+HomeScreen.navigationOptions = {
+  title: 'Home',
+  headerTitle: () => <Logo />,
+  headerStyle: {
+    backgroundColor: '#ffffff',
+  },
 };
 
 const DetailScreen = props => {
@@ -55,9 +67,21 @@ const DetailScreen = props => {
       />
       <Button title="Go back" onPress={() => navigation.goBack()} />
       <Button title="Go home" onPress={() => navigation.navigate('Home')} />
+      <Button
+        title="Update"
+        onPress={() => navigation.setParams({itemId: 'Updated!'})}
+      />
     </View>
   );
 };
+
+DetailScreen.navigationOptions = ({navigation, navigationOptions}) => ({
+  title: navigation.getParam('itemId', 'Detail'),
+  headerStyle: {
+    backgroundColor: navigationOptions.headerTintColor,
+  },
+  headerTintColor: navigationOptions.headerStyle.backgroundColor,
+});
 
 const AppNavigator = createStackNavigator(
   {
@@ -70,6 +94,15 @@ const AppNavigator = createStackNavigator(
   },
   {
     initialRouteName: 'Home',
+    defaultNavigationOptions: {
+      headerStyle: {
+        backgroundColor: '#f4511e',
+      },
+      headerTintColor: '#fff',
+      headerTitleStyle: {
+        fontWeight: 'bold',
+      },
+    },
   },
 );
 
