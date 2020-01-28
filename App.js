@@ -1,120 +1,58 @@
-import React from 'react';
-import {Button, Text, View} from 'react-native';
-import {createAppContainer} from 'react-navigation';
-import {createStackNavigator} from 'react-navigation-stack';
-import {createBottomTabNavigator} from 'react-navigation-tabs';
-import Ionicons from 'react-native-vector-icons/Ionicons';
+import React, {Component} from 'react';
+import {View, Text, StyleSheet, Button} from 'react-native';
+import {SafeAreaView} from 'react-navigation';
 
-const DetailsScreen = props => {
-  return (
-    <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
-      <Text>Details!</Text>
-    </View>
-  );
-};
+/**
+ * https://reactnavigation.org/docs/en/handling-iphonex.html
+ */
 
-const HomeScreen = props => {
-  return (
-    <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
-      <Text>Home!</Text>
-      <Button
-        title="Go to Details"
-        onPress={() => props.navigation.navigate('Details')}
-      />
-    </View>
-  );
-};
+export default class App extends Component {
+  state = {
+    top: 'always',
+    bottom: 'always',
+  };
 
-const SettingsScreen = props => {
-  return (
-    <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
-      <Text>Settings</Text>
-      <Button
-        title="Go to Details"
-        onPress={() => props.navigation.navigate('Details')}
-      />
-    </View>
-  );
-};
+  toggleForceIncet = side => () => {
+    this.setState({
+      [side]: this.state[side] === 'always' ? 'never' : 'always',
+    });
+  };
 
-const IconWithBadge = props => {
-  const {name, badgeCount, color, size} = props;
-
-  return (
-    <View style={{width: 24, height: 24, margin: 5}}>
-      <Ionicons name={name} size={size} color={color} />
-      {badgeCount > 0 && (
-        <View
-          style={{
-            // /If you're using react-native < 0.57 overflow outside of the parent
-            // will not work on Android, see https://git.io/fhLJ8
-            position: 'absolute',
-            right: -6,
-            top: -3,
-            backgroundColor: 'red',
-            borderRadius: 6,
-            width: 12,
-            height: 12,
-            justifyContent: 'center',
-            alignItems: 'center',
-          }}>
-          {badgeCount > 0 && (
-            <Text style={{color: 'white', fontSize: 10, fontWeight: 'bold'}}>
-              {badgeCount}
-            </Text>
-          )}
+  render() {
+    return (
+      <SafeAreaView
+        style={styles.container}
+        forceInset={{
+          top: this.state.top,
+          bottom: this.state.bottom,
+        }}>
+        <Text style={styles.paragraph}>This is top text.</Text>
+        <View>
+          <Button
+            title="Toggle top padding"
+            onPress={this.toggleForceIncet('top')}
+          />
+          <Button
+            title="Toggle bottom padding"
+            onPress={this.toggleForceIncet('bottom')}
+          />
         </View>
-      )}
-    </View>
-  );
-};
-
-const HomeIconWithBadge = props => {
-  // You should pass down the badgeCount in some other ways like context, redux, mobx or event emitters.
-  return <IconWithBadge {...props} badgeCount={3} />;
-};
-
-const getTabBarIcon = (navigation, focused, tintColor) => {
-  const {routeName} = navigation.state;
-  let IconComponent = Ionicons;
-  let iconName;
-  if (routeName === 'Home') {
-    iconName = `ios-information-circle${focused ? '' : '-outline'}`;
-    // We want to add badges to home tab icon
-    IconComponent = HomeIconWithBadge;
-  } else if (routeName === 'Settings') {
-    iconName = focused ? 'ios-list-box' : 'ios-list';
+        <Text style={styles.paragraph}>This is bottom text.</Text>
+      </SafeAreaView>
+    );
   }
+}
 
-  // You can return any component that you like here!
-  return <IconComponent name={iconName} size={25} color={tintColor} />;
-};
-
-const HomeStack = createStackNavigator({
-  Home: HomeScreen,
-  Details: DetailsScreen,
-});
-
-const SettingsStack = createStackNavigator({
-  Settings: SettingsScreen,
-  Details: DetailsScreen,
-});
-
-const TabNavigator = createBottomTabNavigator(
-  {
-    Home: HomeStack,
-    Settings: SettingsStack,
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: '#ecf0f1',
+    justifyContent: 'space-between',
   },
-  {
-    defaultNavigationOptions: ({navigation}) => ({
-      tabBarIcon: ({focused, tintColor}) =>
-        getTabBarIcon(navigation, focused, tintColor),
-    }),
-    tabBarOptions: {
-      activeTintColor: 'tomato',
-      inactiveTintColor: 'gray',
-    },
+  paragraph: {
+    fontSize: 18,
+    fontWeight: 'bold',
+    textAlign: 'center',
+    color: '#34495e',
   },
-);
-
-export default createAppContainer(TabNavigator);
+});
