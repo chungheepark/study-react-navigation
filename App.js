@@ -21,20 +21,40 @@ const HomeScreen = props => {
       <Text>Home Screen</Text>
       <Button
         title="Go to Details"
-        onPress={() => props.navigation.navigate('Details')}
+        onPress={() =>
+          props.navigation.navigate('Details', {
+            itemId: 86,
+            otherParam: 'how about you?',
+          })
+        }
       />
     </View>
   );
 };
 
 const DetailScreen = props => {
+  const {navigation} = props;
+
   return (
     <View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
       <Text>Details Screen</Text>
+      <Text>
+        itemId: {JSON.stringify(navigation.getParam('itemId', 'NO-ID'))}
+      </Text>
+      <Text>
+        otherParam:
+        {JSON.stringify(navigation.getParam('otherParam', 'default value'))}
+      </Text>
       <Button
-        title="Go to Details"
-        onPress={() => props.navigation.navigate('Details')}
+        title="Go to Details... again"
+        onPress={() =>
+          navigation.push('Details', {
+            itemId: Math.floor(Math.random() * 100),
+          })
+        }
       />
+      <Button title="Go back" onPress={() => navigation.goBack()} />
+      <Button title="Go home" onPress={() => navigation.navigate('Home')} />
     </View>
   );
 };
