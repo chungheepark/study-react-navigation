@@ -1,157 +1,120 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- * @flow
- */
-import 'react-native-gesture-handler';
-
-import React, {useState, useEffect} from 'react';
-import {Button, Image, Text, View} from 'react-native';
+import React from 'react';
+import {Button, Text, View} from 'react-native';
 import {createAppContainer} from 'react-navigation';
 import {createStackNavigator} from 'react-navigation-stack';
+import {createBottomTabNavigator} from 'react-navigation-tabs';
+import Ionicons from 'react-native-vector-icons/Ionicons';
 
-const Logo = () => (
-  <Image source={require('./spiro.png')} style={{width: 30, height: 30}} />
-);
-
-/* navigation의 navigate는 기록을 초기화 시키고 이동시켜 버린다. */
-/* navigation의 push는 기록에 추가하고 이동시킨다. */
+const DetailsScreen = props => {
+  return (
+    <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
+      <Text>Details!</Text>
+    </View>
+  );
+};
 
 const HomeScreen = props => {
-  const {navigation} = props;
-  const [count, setCount] = useState(0);
-
-  useEffect(() => {
-    navigation.setParams({
-      increaseCount: () => setCount(c => c + 1),
-    });
-  }, []);
-
   return (
-    <View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
-      <Text>Home Screen</Text>
-      <Text>Count: {count}</Text>
+    <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
+      <Text>Home!</Text>
       <Button
         title="Go to Details"
-        onPress={() =>
-          props.navigation.navigate('Details', {
-            itemId: 86,
-            otherParam: 'how about you?',
-          })
-        }
+        onPress={() => props.navigation.navigate('Details')}
       />
     </View>
   );
 };
 
-HomeScreen.navigationOptions = ({navigation}) => {
-  return {
-    title: 'Home',
-    headerTitle: () => <Logo />,
-    headerStyle: {
-      backgroundColor: '#ffffff',
-    },
-    headerRight: () => (
+const SettingsScreen = props => {
+  return (
+    <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
+      <Text>Settings</Text>
       <Button
-        onPress={navigation.getParam('increaseCount')}
-        title="+1"
-        color="#000"
+        title="Go to Details"
+        onPress={() => props.navigation.navigate('Details')}
       />
-    ),
-    headerLeft: () => (
-      <Button
-        onPress={() => navigation.navigate('MyModal')}
-        title="Open"
-        color="#000"
-      />
-    ),
-  };
+    </View>
+  );
 };
 
-const ModalScreen = props => (
-  <View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
-    <Text style={{fontSize: 30}}>This is a modal!</Text>
-    <Button onPress={() => props.navigation.goBack()} title="OK" />
-  </View>
-);
-
-const DetailScreen = props => {
-  const {navigation} = props;
+const IconWithBadge = props => {
+  const {name, badgeCount, color, size} = props;
 
   return (
-    <View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
-      <Text>Details Screen</Text>
-      <Text>
-        itemId: {JSON.stringify(navigation.getParam('itemId', 'NO-ID'))}
-      </Text>
-      <Text>
-        otherParam:
-        {JSON.stringify(navigation.getParam('otherParam', 'default value'))}
-      </Text>
-      <Button
-        title="Go to Details... again"
-        onPress={() =>
-          navigation.push('Details', {
-            itemId: Math.floor(Math.random() * 100),
-          })
-        }
-      />
-      <Button title="Go back" onPress={() => navigation.goBack()} />
-      <Button title="Go home" onPress={() => navigation.navigate('Home')} />
-      <Button
-        title="Update"
-        onPress={() => navigation.setParams({itemId: 'Updated!'})}
-      />
+    <View style={{width: 24, height: 24, margin: 5}}>
+      <Ionicons name={name} size={size} color={color} />
+      {badgeCount > 0 && (
+        <View
+          style={{
+            // /If you're using react-native < 0.57 overflow outside of the parent
+            // will not work on Android, see https://git.io/fhLJ8
+            position: 'absolute',
+            right: -6,
+            top: -3,
+            backgroundColor: 'red',
+            borderRadius: 6,
+            width: 12,
+            height: 12,
+            justifyContent: 'center',
+            alignItems: 'center',
+          }}>
+          {badgeCount > 0 && (
+            <Text style={{color: 'white', fontSize: 10, fontWeight: 'bold'}}>
+              {badgeCount}
+            </Text>
+          )}
+        </View>
+      )}
     </View>
   );
 };
 
-DetailScreen.navigationOptions = ({navigation, navigationOptions}) => ({
-  title: navigation.getParam('itemId', 'Detail'),
-  headerStyle: {
-    backgroundColor: navigationOptions.headerTintColor,
-  },
-  headerTintColor: navigationOptions.headerStyle.backgroundColor,
+const HomeIconWithBadge = props => {
+  // You should pass down the badgeCount in some other ways like context, redux, mobx or event emitters.
+  return <IconWithBadge {...props} badgeCount={3} />;
+};
+
+const getTabBarIcon = (navigation, focused, tintColor) => {
+  const {routeName} = navigation.state;
+  let IconComponent = Ionicons;
+  let iconName;
+  if (routeName === 'Home') {
+    iconName = `ios-information-circle${focused ? '' : '-outline'}`;
+    // We want to add badges to home tab icon
+    IconComponent = HomeIconWithBadge;
+  } else if (routeName === 'Settings') {
+    iconName = focused ? 'ios-list-box' : 'ios-list';
+  }
+
+  // You can return any component that you like here!
+  return <IconComponent name={iconName} size={25} color={tintColor} />;
+};
+
+const HomeStack = createStackNavigator({
+  Home: HomeScreen,
+  Details: DetailsScreen,
 });
 
-const AppStack = createStackNavigator(
+const SettingsStack = createStackNavigator({
+  Settings: SettingsScreen,
+  Details: DetailsScreen,
+});
+
+const TabNavigator = createBottomTabNavigator(
   {
-    Home: {
-      screen: HomeScreen,
-    },
-    Details: {
-      screen: DetailScreen,
-    },
+    Home: HomeStack,
+    Settings: SettingsStack,
   },
   {
-    initialRouteName: 'Home',
-    defaultNavigationOptions: {
-      headerStyle: {
-        backgroundColor: '#f4511e',
-      },
-      headerTintColor: '#fff',
-      headerTitleStyle: {
-        fontWeight: 'bold',
-      },
+    defaultNavigationOptions: ({navigation}) => ({
+      tabBarIcon: ({focused, tintColor}) =>
+        getTabBarIcon(navigation, focused, tintColor),
+    }),
+    tabBarOptions: {
+      activeTintColor: 'tomato',
+      inactiveTintColor: 'gray',
     },
   },
 );
 
-const RootStack = createStackNavigator(
-  {
-    Main: {
-      screen: AppStack,
-    },
-    MyModal: {
-      screen: ModalScreen,
-    },
-  },
-  {
-    mode: 'modal',
-    headerMode: 'none',
-  },
-);
-
-export default createAppContainer(RootStack);
+export default createAppContainer(TabNavigator);

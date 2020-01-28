@@ -12,14 +12,14 @@
 		13B07FBD1A68108700A75B9A /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB11A68108700A75B9A /* LaunchScreen.xib */; };
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
-		272E5A5DF87096E81246671B /* libPods-JanusSampleTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E0359E354220DB8D8DC9D60E /* libPods-JanusSampleTests.a */; };
-		28CE518F6D10BE75D5B97F9A /* libPods-JanusSample-tvOSTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C341EFC1105BBCCAB58C4716 /* libPods-JanusSample-tvOSTests.a */; };
+		23F65EA55F780E61337874F9 /* libPods-JanusSample-tvOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 308D01FC100632676C87D918 /* libPods-JanusSample-tvOS.a */; };
 		2D02E4BC1E0B4A80006451C7 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.m */; };
 		2D02E4BD1E0B4A84006451C7 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		2D02E4BF1E0B4AB3006451C7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		2DCD954D1E0B4F2C00145EB5 /* JanusSampleTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* JanusSampleTests.m */; };
-		D3617A0499BF21574FEDC719 /* libPods-JanusSample-tvOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 013CDB11A0AC603AAA0CE162 /* libPods-JanusSample-tvOS.a */; };
-		D8783B6DEDDF92F4BBF55BE7 /* libPods-JanusSample.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DB1F0A00AE44683842F727F0 /* libPods-JanusSample.a */; };
+		601CC495B6E4A169D140C644 /* libPods-JanusSampleTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 455A33FEBFFA3265A6B16682 /* libPods-JanusSampleTests.a */; };
+		7DD07E3254A0A578BEFEBF38 /* libPods-JanusSample.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8950FBBB9E0B5FDBF7A3AD94 /* libPods-JanusSample.a */; };
+		ECDD9F1CE01FD1E10A8502C4 /* libPods-JanusSample-tvOSTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 42F60D564821F86468CBE97F /* libPods-JanusSample-tvOSTests.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,7 +44,6 @@
 		00E356EE1AD99517003FC87E /* JanusSampleTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = JanusSampleTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		00E356F11AD99517003FC87E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		00E356F21AD99517003FC87E /* JanusSampleTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JanusSampleTests.m; sourceTree = "<group>"; };
-		013CDB11A0AC603AAA0CE162 /* libPods-JanusSample-tvOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-JanusSample-tvOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		08DC4053AE50B564352DFF68 /* Pods-JanusSampleTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JanusSampleTests.debug.xcconfig"; path = "Target Support Files/Pods-JanusSampleTests/Pods-JanusSampleTests.debug.xcconfig"; sourceTree = "<group>"; };
 		13B07F961A680F5B00A75B9A /* JanusSample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JanusSample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		13B07FAF1A68108700A75B9A /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = JanusSample/AppDelegate.h; sourceTree = "<group>"; };
@@ -55,14 +54,15 @@
 		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = JanusSample/main.m; sourceTree = "<group>"; };
 		2D02E47B1E0B4A5D006451C7 /* JanusSample-tvOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "JanusSample-tvOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D02E4901E0B4A5D006451C7 /* JanusSample-tvOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "JanusSample-tvOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		308D01FC100632676C87D918 /* libPods-JanusSample-tvOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-JanusSample-tvOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		42F60D564821F86468CBE97F /* libPods-JanusSample-tvOSTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-JanusSample-tvOSTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		455A33FEBFFA3265A6B16682 /* libPods-JanusSampleTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-JanusSampleTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		69F8FF069A7AC4458226F8FC /* Pods-JanusSample.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JanusSample.debug.xcconfig"; path = "Target Support Files/Pods-JanusSample/Pods-JanusSample.debug.xcconfig"; sourceTree = "<group>"; };
 		71D1A5B293AE954EE74C23D3 /* Pods-JanusSample-tvOSTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JanusSample-tvOSTests.release.xcconfig"; path = "Target Support Files/Pods-JanusSample-tvOSTests/Pods-JanusSample-tvOSTests.release.xcconfig"; sourceTree = "<group>"; };
 		85951DA97B2F1E45C7336015 /* Pods-JanusSample.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JanusSample.release.xcconfig"; path = "Target Support Files/Pods-JanusSample/Pods-JanusSample.release.xcconfig"; sourceTree = "<group>"; };
+		8950FBBB9E0B5FDBF7A3AD94 /* libPods-JanusSample.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-JanusSample.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		AED67F879F82F9A6D80A4E9E /* Pods-JanusSampleTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JanusSampleTests.release.xcconfig"; path = "Target Support Files/Pods-JanusSampleTests/Pods-JanusSampleTests.release.xcconfig"; sourceTree = "<group>"; };
-		C341EFC1105BBCCAB58C4716 /* libPods-JanusSample-tvOSTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-JanusSample-tvOSTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D6F78A11E8BFFBD7AE1024BA /* Pods-JanusSample-tvOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JanusSample-tvOS.release.xcconfig"; path = "Target Support Files/Pods-JanusSample-tvOS/Pods-JanusSample-tvOS.release.xcconfig"; sourceTree = "<group>"; };
-		DB1F0A00AE44683842F727F0 /* libPods-JanusSample.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-JanusSample.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		E0359E354220DB8D8DC9D60E /* libPods-JanusSampleTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-JanusSampleTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 		ED2971642150620600B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = Platforms/AppleTVOS.platform/Developer/SDKs/AppleTVOS12.0.sdk/System/Library/Frameworks/JavaScriptCore.framework; sourceTree = DEVELOPER_DIR; };
 		EF295144A6284A1C835C6AA5 /* Pods-JanusSample-tvOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JanusSample-tvOS.debug.xcconfig"; path = "Target Support Files/Pods-JanusSample-tvOS/Pods-JanusSample-tvOS.debug.xcconfig"; sourceTree = "<group>"; };
@@ -74,7 +74,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				272E5A5DF87096E81246671B /* libPods-JanusSampleTests.a in Frameworks */,
+				601CC495B6E4A169D140C644 /* libPods-JanusSampleTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -82,7 +82,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D8783B6DEDDF92F4BBF55BE7 /* libPods-JanusSample.a in Frameworks */,
+				7DD07E3254A0A578BEFEBF38 /* libPods-JanusSample.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -90,7 +90,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D3617A0499BF21574FEDC719 /* libPods-JanusSample-tvOS.a in Frameworks */,
+				23F65EA55F780E61337874F9 /* libPods-JanusSample-tvOS.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -98,7 +98,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				28CE518F6D10BE75D5B97F9A /* libPods-JanusSample-tvOSTests.a in Frameworks */,
+				ECDD9F1CE01FD1E10A8502C4 /* libPods-JanusSample-tvOSTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -141,10 +141,10 @@
 			children = (
 				ED297162215061F000B7C4FE /* JavaScriptCore.framework */,
 				ED2971642150620600B7C4FE /* JavaScriptCore.framework */,
-				DB1F0A00AE44683842F727F0 /* libPods-JanusSample.a */,
-				013CDB11A0AC603AAA0CE162 /* libPods-JanusSample-tvOS.a */,
-				C341EFC1105BBCCAB58C4716 /* libPods-JanusSample-tvOSTests.a */,
-				E0359E354220DB8D8DC9D60E /* libPods-JanusSampleTests.a */,
+				8950FBBB9E0B5FDBF7A3AD94 /* libPods-JanusSample.a */,
+				308D01FC100632676C87D918 /* libPods-JanusSample-tvOS.a */,
+				42F60D564821F86468CBE97F /* libPods-JanusSample-tvOSTests.a */,
+				455A33FEBFFA3265A6B16682 /* libPods-JanusSampleTests.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -230,6 +230,7 @@
 				13B07F8E1A680F5B00A75B9A /* Resources */,
 				00DD1BFF1BD5951E006B06BC /* Bundle React Native code and images */,
 				ED7F0189FAB65BC8FB395A0B /* [CP] Embed Pods Frameworks */,
+				777477616127D071C72522E2 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -285,7 +286,7 @@
 		83CBB9F71A601CBA00E9B192 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0940;
+				LastUpgradeCheck = 940;
 				ORGANIZATIONNAME = Facebook;
 				TargetAttributes = {
 					00E356ED1AD99517003FC87E = {
@@ -378,7 +379,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "export NODE_BINARY=node\n../node_modules/react-native/scripts/react-native-xcode.sh";
+			shellScript = "export NODE_BINARY=node\n../node_modules/react-native/scripts/react-native-xcode.sh\n";
 		};
 		2C78430C0093314EEEA0B1A2 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -458,6 +459,54 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		777477616127D071C72522E2 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-JanusSample/Pods-JanusSample-resources.sh",
+				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/AntDesign.ttf",
+				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/Entypo.ttf",
+				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/EvilIcons.ttf",
+				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/Feather.ttf",
+				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/FontAwesome.ttf",
+				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/FontAwesome5_Brands.ttf",
+				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/FontAwesome5_Regular.ttf",
+				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/FontAwesome5_Solid.ttf",
+				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/Fontisto.ttf",
+				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/Foundation.ttf",
+				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/Ionicons.ttf",
+				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/MaterialCommunityIcons.ttf",
+				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/MaterialIcons.ttf",
+				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/Octicons.ttf",
+				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/SimpleLineIcons.ttf",
+				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/Zocial.ttf",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/AntDesign.ttf",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/Entypo.ttf",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/EvilIcons.ttf",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/Feather.ttf",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/FontAwesome.ttf",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/FontAwesome5_Brands.ttf",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/FontAwesome5_Regular.ttf",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/FontAwesome5_Solid.ttf",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/Fontisto.ttf",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/Foundation.ttf",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/Ionicons.ttf",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/MaterialCommunityIcons.ttf",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/MaterialIcons.ttf",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/Octicons.ttf",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/SimpleLineIcons.ttf",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/Zocial.ttf",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-JanusSample/Pods-JanusSample-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		8D5547235372214244EC0CB6 /* [CP] Check Pods Manifest.lock */ = {
