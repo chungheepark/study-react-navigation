@@ -60,8 +60,22 @@ HomeScreen.navigationOptions = ({navigation}) => {
         color="#000"
       />
     ),
+    headerLeft: () => (
+      <Button
+        onPress={() => navigation.navigate('MyModal')}
+        title="Open"
+        color="#000"
+      />
+    ),
   };
 };
+
+const ModalScreen = props => (
+  <View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
+    <Text style={{fontSize: 30}}>This is a modal!</Text>
+    <Button onPress={() => props.navigation.goBack()} title="OK" />
+  </View>
+);
 
 const DetailScreen = props => {
   const {navigation} = props;
@@ -102,7 +116,7 @@ DetailScreen.navigationOptions = ({navigation, navigationOptions}) => ({
   headerTintColor: navigationOptions.headerStyle.backgroundColor,
 });
 
-const AppNavigator = createStackNavigator(
+const AppStack = createStackNavigator(
   {
     Home: {
       screen: HomeScreen,
@@ -125,4 +139,19 @@ const AppNavigator = createStackNavigator(
   },
 );
 
-export default createAppContainer(AppNavigator);
+const RootStack = createStackNavigator(
+  {
+    Main: {
+      screen: AppStack,
+    },
+    MyModal: {
+      screen: ModalScreen,
+    },
+  },
+  {
+    mode: 'modal',
+    headerMode: 'none',
+  },
+);
+
+export default createAppContainer(RootStack);
