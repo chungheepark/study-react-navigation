@@ -1,95 +1,54 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- * @flow
- */
-import 'react-native-gesture-handler';
+import React, {useState} from 'react';
+import {Text, View, Button, Image} from 'react-native';
+import {NavigationContainer} from '@react-navigation/native';
+import {createStackNavigator} from '@react-navigation/stack';
 
-import React, {useState, useEffect} from 'react';
-import {Button, Image, Text, View} from 'react-native';
-import {createAppContainer} from 'react-navigation';
-import {createStackNavigator} from 'react-navigation-stack';
+function LogoTitle() {
+  return (
+    <Image style={{width: 50, height: 50}} source={require('./spiro.png')} />
+  );
+}
 
-const Logo = () => (
-  <Image source={require('./spiro.png')} style={{width: 30, height: 30}} />
-);
-
-/* navigation의 navigate는 기록을 초기화 시키고 이동시켜 버린다. */
-/* navigation의 push는 기록에 추가하고 이동시킨다. */
-
-const HomeScreen = props => {
-  const {navigation} = props;
+function HomeScreen({navigation}) {
   const [count, setCount] = useState(0);
 
-  useEffect(() => {
-    navigation.setParams({
-      increaseCount: () => setCount(c => c + 1),
-    });
-  }, []);
+  navigation.setOptions({
+    headerRight: () => (
+      <Button
+        onPress={() => setCount(c => c + 1)}
+        title="Update count"
+        color="#fff"
+      />
+    ),
+  });
 
   return (
     <View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
       <Text>Home Screen</Text>
-      <Text>Count: {count}</Text>
       <Button
         title="Go to Details"
-        onPress={() =>
-          props.navigation.navigate('Details', {
+        onPress={() => {
+          /* 1. Navigate to the Details route with params */
+          navigation.navigate('Details', {
             itemId: 86,
-            otherParam: 'how about you?',
-          })
-        }
+            otherParam: 'anything you want here',
+          });
+        }}
       />
+      <Text>count {count}</Text>
     </View>
   );
-};
+}
 
-HomeScreen.navigationOptions = ({navigation}) => {
-  return {
-    title: 'Home',
-    headerTitle: () => <Logo />,
-    headerStyle: {
-      backgroundColor: '#ffffff',
-    },
-    headerRight: () => (
-      <Button
-        onPress={navigation.getParam('increaseCount')}
-        title="+1"
-        color="#000"
-      />
-    ),
-    headerLeft: () => (
-      <Button
-        onPress={() => navigation.navigate('MyModal')}
-        title="Open"
-        color="#000"
-      />
-    ),
-  };
-};
-
-const ModalScreen = props => (
-  <View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
-    <Text style={{fontSize: 30}}>This is a modal!</Text>
-    <Button onPress={() => props.navigation.goBack()} title="OK" />
-  </View>
-);
-
-const DetailScreen = props => {
-  const {navigation} = props;
-
+function DetailsScreen({route, navigation}) {
+  /* 2. Get the param */
+  const {itemId} = route.params;
+  const {otherParam} = route.params;
   return (
     <View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
       <Text>Details Screen</Text>
-      <Text>
-        itemId: {JSON.stringify(navigation.getParam('itemId', 'NO-ID'))}
-      </Text>
-      <Text>
-        otherParam:
-        {JSON.stringify(navigation.getParam('otherParam', 'default value'))}
-      </Text>
+      <Text>itemId: {JSON.stringify(itemId)}</Text>
+      <Text>otherParam: {JSON.stringify(otherParam)}</Text>
       <Button
         title="Go to Details... again"
         onPress={() =>
@@ -98,60 +57,40 @@ const DetailScreen = props => {
           })
         }
       />
+      <Button title="Go to Home" onPress={() => navigation.navigate('Home')} />
       <Button title="Go back" onPress={() => navigation.goBack()} />
-      <Button title="Go home" onPress={() => navigation.navigate('Home')} />
-      <Button
-        title="Update"
-        onPress={() => navigation.setParams({itemId: 'Updated!'})}
-      />
     </View>
   );
-};
+}
 
-DetailScreen.navigationOptions = ({navigation, navigationOptions}) => ({
-  title: navigation.getParam('itemId', 'Detail'),
-  headerStyle: {
-    backgroundColor: navigationOptions.headerTintColor,
-  },
-  headerTintColor: navigationOptions.headerStyle.backgroundColor,
-});
+const Stack = createStackNavigator();
 
-const AppStack = createStackNavigator(
-  {
-    Home: {
-      screen: HomeScreen,
-    },
-    Details: {
-      screen: DetailScreen,
-    },
-  },
-  {
-    initialRouteName: 'Home',
-    defaultNavigationOptions: {
-      headerStyle: {
-        backgroundColor: '#f4511e',
-      },
-      headerTintColor: '#fff',
-      headerTitleStyle: {
-        fontWeight: 'bold',
-      },
-    },
-  },
-);
-
-const RootStack = createStackNavigator(
-  {
-    Main: {
-      screen: AppStack,
-    },
-    MyModal: {
-      screen: ModalScreen,
-    },
-  },
-  {
-    mode: 'modal',
-    headerMode: 'none',
-  },
-);
-
-export default createAppContainer(RootStack);
+export default function App() {
+  return (
+    <NavigationContainer>
+      <Stack.Navigator
+        screenOptions={{
+          headerStyle: {
+            backgroundColor: '#f4511e',
+          },
+          headerTintColor: '#fff',
+          headerTitleStyle: {
+            fontWeight: 'bold',
+          },
+        }}>
+        <Stack.Screen
+          name="Home"
+          component={HomeScreen}
+          options={{
+            headerTitle: props => <LogoTitle {...props} />,
+          }}
+        />
+        <Stack.Screen
+          name="Details"
+          component={DetailsScreen}
+          options={({route}) => ({title: route.params.itemId})}
+        />
+      </Stack.Navigator>
+    </NavigationContainer>
+  );
+}
